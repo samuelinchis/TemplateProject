@@ -75,6 +75,7 @@
     <ClInclude Include="casa.h">
       <Filter>clasesPropias</Filter>
     </ClInclude>
+    <ClInclude Include="Cola.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="glew\source\glew.c">
@@ -162,6 +163,7 @@
     <ClCompile Include="casa.cpp">
       <Filter>clasesPropias</Filter>
     </ClCompile>
+    <ClCompile Include="Cola.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="freeglut\source\freeglutdll.def">

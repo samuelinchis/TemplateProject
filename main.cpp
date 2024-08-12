@@ -10,6 +10,7 @@
 #include "glsl.h"
 #include <time.h>
 #include "casa.h"
+#include "Cola.h"
 
 //-----------------------------------------------------------------------------
 
@@ -24,6 +25,7 @@ protected:
    float timer010;  // timer counting 0->1->0
    bool bUp;        // flag if counting up or down.
    casa* Micasa;
+   Cola* MiCola;
 
 
 public:
@@ -36,48 +38,10 @@ public:
       //timer010 = 0.09; //for screenshot!
       glPushMatrix();
       if (shader) shader->begin();
-      glTranslatef(0, 0, -8);
-      glPushMatrix();
-        // glRotatef(timer010*360, 0.5, 1.0f, 0.1f);
-
-         glPushMatrix();
-         glTranslated(-3, 0, 0);
-         glutSolidTeapot(0.5); //dibuja la taza 1
-         glPopMatrix();
-
-         glPushMatrix();            //dibuja un cubo 1
-         glTranslated(3, 3, 0);
-         glRotated(-30, 0, 0, -45);
-         glutSolidCube(1);
-         glPopMatrix();
-
-         glPushMatrix();        //construccion y traslacion del cubo 2
-         glTranslated(-3,3,0);
-         glRotated(-30,0,0,30);
-         glutSolidCube(1);
-         glPopMatrix();
-
-         glPushMatrix();         //construcccion y traslacion del triangulo
-         glTranslated(0, 3, 0);
-         glBegin(GL_TRIANGLES);
-         glVertex3f(-1, 0, 0);
-         glVertex3f(0, 1, 0);
-         glVertex3f(1, 0, 0);
-         glEnd();
-         glPopMatrix();
-
-
-         glPushMatrix();
-         glTranslated(3, 0, 0);
-         glutSolidTeapot(0.5); //dibuja la taza 2
-         glPopMatrix();
-
-         glPushMatrix();
-         glTranslated(0, -3, 0);
-         glutSolidTeapot(0.5); //dibuja la taza 2
-         glPopMatrix();
-         
-         glPopMatrix();
+      glTranslatef(0, 0, -40);
+      MiCola->DibujarCola(10, 0, 0, 0);
+     
+        
 
       if (shader) shader->end();
       glutSwapBuffers();
@@ -94,6 +58,7 @@ public:
 	// is already available!
 	virtual void OnInit()
 	{
+        MiCola = new Cola();
         Micasa = new casa();
 		glClearColor(0.5f, 0.5f, 1.0f, 0.0f);
 		glShadeModel(GL_SMOOTH);
